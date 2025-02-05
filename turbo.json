@@ -32,6 +32,14 @@
     "//#clean": {
       "cache": false
     },
+    "db:generate": {
+      "cache": false,
+      "interactive": true
+    },
+    "migrate": {
+      "cache": false,
+      "interactive": true
+    },
     "push": {
       "cache": false,
       "interactive": true
