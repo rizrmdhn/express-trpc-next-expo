@@ -1,16 +1,17 @@
-# Monorepo Starter with Hono and tRPC
+# Monorepo Starter with Express and tRPC
 
-This is a monorepo starter template using Hono and tRPC with Turborepo.
+This is a monorepo starter template using Express and tRPC with Turborepo.
 
 ## Apps
 
 - `mobile`: Expo app
 - `web`: Next.js app
-- `server`: Hono server with tRPC
+- `server`: Express server with tRPC
 
 ## Packages
 
 - `@rizrmdhn/api`: tRPC API implementation
+- `@rizrmdhn/db`: Drizzle database client
 - `@rizrmdhn/auth`: Authentication utilities
 - `@rizrmdhn/types`: Shared TypeScript types
 - `@rizrmdhn/validators`: Zod validators
@@ -38,7 +39,7 @@ pnpm build
 ## Key Features
 
 - Full-stack type safety with tRPC
-- Fast and lightweight Hono server
+- Robust Express.js server
 - Authentication system
 - Code sharing between apps
 - Configured tooling:
@@ -57,3 +58,10 @@ Common commands available in all apps and packages:
 - `pnpm lint` - Lint code
 - `pnpm format` - Format code
 - `pnpm typecheck` - Type check
+
+## Database Commands
+
+- `pnpm db:generate` - Generate database migrations
+- `pnpm db:migrate` - Run database migrations
+- `pnpm db:push` - Push schema changes to database
+- `pnpm db:studio` - Open Prisma Studio
