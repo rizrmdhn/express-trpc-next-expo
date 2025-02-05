@@ -1,0 +1,32 @@
+{
+  "name": "@rizrmdhn/validators",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "sort:package": "pnpm dlx sort-package-json",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "prettier": "@rizrmdhn/prettier-config",
+  "dependencies": {
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@rizrmdhn/eslint-config": "workspace:*",
+    "@rizrmdhn/prettier-config": "workspace:*",
+    "@rizrmdhn/tsconfig": "workspace:*",
+    "dotenv-cli": "^8.0.0",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  }
+}

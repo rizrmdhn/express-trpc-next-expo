@@ -1,0 +1,43 @@
+{
+  "name": "@rizrmdhn/api",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "sort:package": "pnpm dlx sort-package-json",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "prettier": "@rizrmdhn/prettier-config",
+  "dependencies": {
+    "@node-rs/argon2": "^2.0.2",
+    "@rizrmdhn/auth": "workspace:*",
+    "@rizrmdhn/db": "workspace:*",
+    "@rizrmdhn/queries": "workspace:*",
+    "@rizrmdhn/validators": "workspace:*",
+    "@trpc/server": "catalog:",
+    "superjson": "^2.2.2",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@rizrmdhn/eslint-config": "workspace:*",
+    "@rizrmdhn/prettier-config": "workspace:*",
+    "@rizrmdhn/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "dotenv-cli": "^8.0.0",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  }
+}
