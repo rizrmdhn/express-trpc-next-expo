@@ -20,7 +20,7 @@ async function main() {
   });
 
   app.use(
-    "/trpc/*",
+    "/trpc",
     createExpressMiddleware({
       router: appRouter,
     })
