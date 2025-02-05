@@ -9,7 +9,9 @@ import {
 } from "drizzle-orm/pg-core";
 import { v7 as uuidv7 } from "uuid";
 
-export const createTable = pgTableCreator((name) => `${name}`);
+export const createTable = pgTableCreator(
+  (name) => `express-trpc-next-expo_${name}`,
+);
 
 export const users = createTable(
   "users",

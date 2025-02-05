@@ -1,52 +1,37 @@
-import { serve } from "@hono/node-server";
-import { trpcServer } from "@hono/trpc-server";
-import { Hono } from "hono";
-import { cors } from "hono/cors";
+import { createExpressMiddleware } from "@trpc/server/adapters/express";
+import express from "express";
+import cors from "cors";
 
 import { appRouter } from "@rizrmdhn/api";
 import { env } from "../env.js";
 
-const app = new Hono();
+async function main() {
+  const app = express();
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+  app.use(
+    cors({
+      origin: "*", // Allow all origins (for production, you should specify the allowed origins)
+    })
+  );
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
+  // For checking if the server is running
+  app.get("/", (_, res) => {
+    res.json({ ok: true, message: "Hello from server!" });
+  });
+
+  app.use(
+    "/trpc/*",
+    createExpressMiddleware({
+      router: appRouter,
+    })
+  );
+
+  app.listen(env.SERVER_PORT);
+
+  console.log(`Server is running on http://localhost:${env.SERVER_PORT}`);
+}
+
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
 });
-
-app.use(
-  "/trpc/*",
-  trpcServer({
-    router: appRouter,
-  })
-);
-
-const port = env.SERVER_PORT;
-console.log(`Server is running on http://localhost:${port}`);
-
-const server = serve({
-  fetch: app.fetch,
-  port,
-});
-
-// Graceful shutdown handling
-const shutdown = async () => {
-  console.log("\nReceived shutdown signal. Closing server...");
-
-  try {
-    server.close();
-    console.log("Server closed successfully");
-    process.exit(0);
-  } catch (err) {
-    console.error("Error during shutdown:", err);
-    process.exit(1);
-  }
-};
-
-// Listen for interrupt signals
-process.on("SIGTERM", shutdown);
-process.on("SIGINT", shutdown);
