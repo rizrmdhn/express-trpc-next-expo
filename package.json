@@ -1,10 +1,12 @@
 {
-  "name": "hono-trpc",
+  "name": "express-trpc-next-expo",
   "private": true,
   "scripts": {
     "build": "turbo run build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo run clean",
+    "db:generate": "turbo -F @rizrmdhn/db generate",
+    "db:migrate": "turbo -F @rizrmdhn/db migrate",
     "db:push": "turbo -F @rizrmdhn/db push",
     "db:studio": "turbo -F @rizrmdhn/db studio",
     "dev": "turbo watch dev --continue",

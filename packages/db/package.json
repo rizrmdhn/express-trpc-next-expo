@@ -24,9 +24,11 @@
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
+    "generate": "pnpm with-env drizzle-kit generate",
+    "migrate": "pnpm with-env drizzle-kit migrate",
     "push": "pnpm with-env drizzle-kit push",
-    "sort:package": "pnpm dlx sort-package-json",
     "studio": "pnpm with-env drizzle-kit studio",
+    "sort:package": "pnpm dlx sort-package-json",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "dotenv -e ../../.env --"
   },
