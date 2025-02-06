@@ -1,8 +1,8 @@
-import { createExpressMiddleware } from "@trpc/server/adapters/express";
+import * as trpcExpress from "@trpc/server/adapters/express";
 import express from "express";
 import cors from "cors";
 
-import { appRouter } from "@rizrmdhn/api";
+import { appRouter, createTRPCContext } from "@rizrmdhn/api";
 import { env } from "../env.js";
 
 async function main() {
@@ -21,8 +21,19 @@ async function main() {
 
   app.use(
     "/trpc",
-    createExpressMiddleware({
+    trpcExpress.createExpressMiddleware({
       router: appRouter,
+      createContext: (opts) =>
+        createTRPCContext({
+          headers: new Headers(
+            Object.entries(opts.req.headers)
+              .filter(([_, v]) => v !== undefined)
+              .map(([k, v]) => [k, Array.isArray(v) ? v.join(", ") : v]) as [
+              string,
+              string,
+            ][]
+          ),
+        }),
     })
   );
 
