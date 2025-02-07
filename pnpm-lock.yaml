@@ -293,6 +293,15 @@ importers:
         specifier: ^3.24.1
         version: 3.24.1
     devDependencies:
+      '@rizrmdhn/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@rizrmdhn/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
+      '@rizrmdhn/tailwind-config':
+        specifier: workspace:*
+        version: link:../../tooling/tailwind
       '@rizrmdhn/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript

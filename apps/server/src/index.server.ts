@@ -5,7 +5,7 @@ import cors from "cors";
 import { appRouter, createTRPCContext } from "@rizrmdhn/api";
 import { env } from "../env.js";
 
-async function main() {
+function main() {
   const app = express();
 
   app.use(
@@ -42,7 +42,4 @@ async function main() {
   console.log(`Server is running on http://localhost:${env.SERVER_PORT}`);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+main();

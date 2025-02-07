@@ -19,6 +19,9 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@rizrmdhn/eslint-config": "workspace:*",
+    "@rizrmdhn/prettier-config": "workspace:*",
+    "@rizrmdhn/tailwind-config": "workspace:*",
     "@rizrmdhn/tsconfig": "workspace:*",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
